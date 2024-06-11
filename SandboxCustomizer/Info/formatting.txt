@@ -1,0 +1,38 @@
+﻿// Kinda scuffed. Should probably just use json but it's good to learn this stuff
+// Could hypothetically improve format slightly by removing curly brackets from the fields but it's not that bad
+|1.0.0| // Version of the serialized data, so I can update older versions in the event that I change the serialization method
+[Indoor Lights]
+{
+	(color){float, float, float, float}
+	(color){float, float, float, float}
+	(color){float, float, float, float}
+	(color){float, float, float, float}
+	(color){float, float, float, float}
+	(color){float, float, float, float}
+	(color){float, float, float, float}
+	(color){float, float, float, float}
+}
+[Outdoor Lights]
+{
+	(color){float, float, float, float}
+	(color){float, float, float, float}
+	(color){float, float, float, float}
+}
+[Godrays]
+{
+	(color){float, float, float, float}
+	(color){float, float, float, float}
+	(color){float, float, float, float}
+	(color){float, float, float, float}
+}
+[Fog]
+{
+	(color){float, float, float, float}
+	(float){float} // start
+	(float){float} // end
+	(bool){bool}
+}
+[Skybox]
+{
+	(string){string} //Was originally (base64[size]){bigassstring} but unfortunately made serialization too slow at bigger image sizes (1MB up)
+}
