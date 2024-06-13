@@ -23,6 +23,8 @@ namespace SandboxCustomizer.UI
         public GameObject button_folder;
         public GameObject button_back;
 
+        public GameObject button_cg;
+
         public Image skybox_image;
 
         public void Create(Transform transfrom)
@@ -31,6 +33,9 @@ namespace SandboxCustomizer.UI
             button_texture = Utils.ReplaceButtonForShop(gameObject.transform.Find("button texture").gameObject, gameObject.transform);
             button_folder = Utils.ReplaceButtonForShop(gameObject.transform.Find("button folder").gameObject, gameObject.transform);
             button_back = Utils.ReplaceButtonForShop(gameObject.transform.Find("button back").gameObject, gameObject.transform);
+
+            button_cg = Utils.ReplaceButtonForShop(gameObject.transform.Find("button cg").gameObject, gameObject.transform);
+            
             skybox_image = gameObject.transform.Find("TextureDisplay").GetComponent<Image>();
             button_texture.GetComponent<PointerAdder>().on_pressed_actions.Add(new UnityAction(() =>
             {
@@ -39,9 +44,9 @@ namespace SandboxCustomizer.UI
                 {
                     foreach(string str in list)
                     {
-                        for (int i = 0; i < Utils.imageTypes.Count; i++)
+                        for (int i = 0; i < Utils.image_types.Count; i++)
                         {
-                            if (string.Equals(Utils.imageTypes[i], Path.GetExtension(str), StringComparison.OrdinalIgnoreCase))
+                            if (string.Equals(Utils.image_types[i], Path.GetExtension(str), StringComparison.OrdinalIgnoreCase))
                             {
                                 Debug.Log(str);
                                 SandboxManager.sandbox_current.LoadSkyboxFromPath(list[0]);
@@ -80,6 +85,11 @@ namespace SandboxCustomizer.UI
                         }
                     }
                 }
+            }));
+
+            button_cg.GetComponent<PointerAdder>().on_pressed_actions.Add(new UnityAction(() =>
+            {
+                Application.OpenURL(Path.Combine(Plugin.united_kingdom_path, "Cybergrind\\Textures"));
             }));
 
             button_folder.GetComponent<PointerAdder>().on_pressed_actions.Add(new UnityAction(() =>

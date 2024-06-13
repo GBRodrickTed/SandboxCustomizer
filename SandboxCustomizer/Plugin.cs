@@ -20,6 +20,8 @@ namespace SandboxCustomizer
         Transform day_outdoors = null;
         public static List<CustomSandbox> sbs = new List<CustomSandbox>();
         List<string> tex_path = new List<string>();
+        public static string united_kingdom_path = Path.GetFullPath(Path.Combine(Application.dataPath, "..\\"));
+        public static List<string> cg_skybox_paths = new List<string> { "Cybergrind\\Textures\\Skyboxes", "Cybergrind\\Textures\\Starbuster\\Skyboxes", "Cybergrind\\Textures\\Vvizard\\Skyboxes"};
         public static string data_folder_path = Path.Combine(Utils.ModDir(), "Data");
         public static string sandbox_folder_path = Path.Combine(Utils.ModDir(), "Sandboxes");
         public static string skybox_folder_path = Path.Combine(Utils.ModDir(), "Skyboxes");
@@ -33,6 +35,10 @@ namespace SandboxCustomizer
             AssetHandler.LoadBundle();
             AssetHandler.MakePrefabs();
 
+            Debug.Log(Application.dataPath);
+            Debug.Log(Application.persistentDataPath);
+            Debug.Log("Lololo");
+
             load_on_start = this.Config.Bind("Sandbox", "Load_Sandbox_On_Start", "Day");
             remeber_last_sandbox = this.Config.Bind("Sandbox", "Remember_Last_Sandbox", true);
             auto_save_sandbox = this.Config.Bind("Sandbox", "Auto_Save_Sandbox", false);
@@ -40,13 +46,13 @@ namespace SandboxCustomizer
 
             foreach (string file in Directory.EnumerateFiles(skybox_folder_path))
             {
-                for (int i = 0; i < Utils.imageTypes.Count; i++)
+                for (int i = 0; i < Utils.image_types.Count; i++)
                 {
-                    if (string.Equals(Utils.imageTypes[i], Path.GetExtension(file), StringComparison.OrdinalIgnoreCase))
+                    if (string.Equals(Utils.image_types[i], Path.GetExtension(file), StringComparison.OrdinalIgnoreCase))
                     {
                         tex_path.Add(file);
                         SandboxManager.tex_path.Add(file);
-                        Debug.Log(file);
+                        //Debug.Log(file);
                     }
                 }
             }

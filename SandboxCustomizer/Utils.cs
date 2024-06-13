@@ -12,7 +12,7 @@ namespace SandboxCustomizer
 {
     public static class Utils
     {
-        public static List<string> imageTypes = new List<string> { ".jpeg", ".jpg", ".png", ".bmp" };
+        public static List<string> image_types = new List<string> { ".jpeg", ".jpg", ".png", ".bmp" };
         public static string ModDir()
         {
             return Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
