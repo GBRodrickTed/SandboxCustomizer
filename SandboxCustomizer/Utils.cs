@@ -7,6 +7,9 @@ using System.Reflection;
 using System.Collections.Generic;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using UnityEngine.AddressableAssets.ResourceLocators;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace SandboxCustomizer
 {
@@ -263,6 +266,33 @@ namespace SandboxCustomizer
 
             settings_panel = AssetHandler.LoadAsset<GameObject>("SettingsPanel");
             settings_panel.AddComponent<HudOpenEffect>();
+        }
+    }
+
+    public static class WhyDoesGettingAddressableNamesAtRuntimeHaveToBeSoHard
+    {
+        public static async void GetAddressKeys()
+        {
+            AsyncOperationHandle<IResourceLocator> thingy = Addressables.LoadContentCatalogAsync("Where the catalog json is");
+            await thingy.Task;
+            List<string> addressKeys = new List<string>();
+            IResourceLocator resLocator = thingy.Result;
+            if (resLocator != null)
+                if (resLocator != null)
+                {
+                    Debug.Log("YEAAAAAAH");
+                    foreach (var key in resLocator.Keys)
+                    {
+                        addressKeys.Add(key.ToString());
+                        Debug.Log(key.ToString());
+                    }
+                    File.WriteAllLines(Path.Combine("Path you want to save the cataloge"), addressKeys);
+                }
+                else
+                {
+                    Debug.Log("Aw fiddlesticks");
+                }
+
         }
     }
 }

@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-//using UnityEngine.UIElements;
 using static UnityEngine.RemoteConfigSettingsHelper;
 
 namespace SandboxCustomizer.UI
@@ -29,7 +28,7 @@ namespace SandboxCustomizer.UI
             color = Color.white;
             slider_value = Color.white;
             gameObject = GameObject.Instantiate<GameObject>(AssetHandler.light_color_slider, transform);
-            //Debug.Log("im about to go in im about to begin");
+            //Debug.Log("im about to go in im about to begin");//
             slider_r = Utils.ReplaceSliderForShop(gameObject.transform.Find("Red").gameObject, gameObject.transform).GetComponent<Slider>();
             slider_g = Utils.ReplaceSliderForShop(gameObject.transform.Find("Green").gameObject, gameObject.transform).GetComponent<Slider>();
             slider_b = Utils.ReplaceSliderForShop(gameObject.transform.Find("Blue").gameObject, gameObject.transform).GetComponent<Slider>();

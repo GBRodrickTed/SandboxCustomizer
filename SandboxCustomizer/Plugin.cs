@@ -35,8 +35,10 @@ namespace SandboxCustomizer
             AssetHandler.LoadBundle();
             AssetHandler.MakePrefabs();
 
+            WhyDoesGettingAddressableNamesAtRuntimeHaveToBeSoHard.GetAddressKeys();
+
             Debug.Log(Application.dataPath);
-            Debug.Log(Application.persistentDataPath);
+            Debug.Log(Application.persistentDataPath);//
             Debug.Log("Lololo");
 
             load_on_start = this.Config.Bind("Sandbox", "Load_Sandbox_On_Start", "Day");

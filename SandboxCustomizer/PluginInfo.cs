@@ -10,6 +10,6 @@ namespace SandboxCustomizer
     {
         public const string Name = "SandboxCustomizer";
         public const string GUID = "ironfarm.uk.sandboxcustom";
-        public const string Version = "1.0.0";
+        public const string Version = "1.0.2";
     }
 }
